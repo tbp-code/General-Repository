@@ -36,3 +36,10 @@ and  `a^2 ` is slower than `a*a`.
 
 Radford Neal [pointed this out](http://radfordneal.wordpress.com/2010/08/19/speeding-up-parentheses-and-lots-more-in-r/) in  R-2.11.1, try testing in R 2.14.1 first.  
 
+## Compiling code
+
+As of R2.13, the `complile` package lets you compile code into byte for faster processing.  The basic syntax is:
+
+`compiled.function <- cmpfun(orig.function)`
+
+A demonstration [here](http://dirk.eddelbuettel.com/blog/2011/04/12/) shows that it speeds some basic functions up about 4X.
