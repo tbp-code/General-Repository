@@ -46,23 +46,17 @@ Accesssing arrays via index is faster than by name, but using names can make for
 To achieve fast access and still use names, one can construct an environment that uses a hash table for lookup
 
 ```R
-labeled.environment <- function(n) {
-  e <- new.env(hash=TRUE,size=n)
-  from <- "0123456789"
-  to <- "ABCDEFGHIJ"
-  for (i in 1:n) {
-    assign(x=chartr(from,to,i), value=i, envir=e)
-  }
-  e
-}
-e.20 <- labeled.environment(20)
+e <- new.env(hash=TRUE,size=2)
+assign(x="first", value=1, envir=e)
+assign(x="second", value=2, envir=e)
+e
 
 ## Access via
-e.20[["B"]]
-get("BH", env=e.20)
+e[["first"]]
+get("second", env=e)
 ```
 
-This tip is from  [Joseph Adler](http://broadcast.oreilly.com/2010/03/lookup-performance-in-r.html)
+This tip is from [Joseph Adler](http://broadcast.oreilly.com/2010/03/lookup-performance-in-r.html), who goes throught the speed improvements of this method verus named arrays.
 
 
 ## Compiling code
